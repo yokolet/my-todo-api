@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: First
+  done: false
+  todo: one
+
+two:
+  name: Second
+  done: false
+  todo: one

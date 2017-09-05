@@ -38,10 +38,12 @@ group :development do
 end
 
 group :test do
-  gem 'factory_girl_rails', '~> 4.8'
-  gem 'shoulda-matchers', '~> 3.1', '>= 3.1.2'
-  gem 'faker', '~> 1.8', '>= 1.8.4'
-  gem 'database_cleaner', '~> 1.6', '>= 1.6.1'
+  gem 'factory_girl_rails'
+  gem 'test-unit'
+  gem 'shoulda'
+  gem 'shoulda-matchers'
+  gem 'faker'
+  gem 'database_cleaner'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

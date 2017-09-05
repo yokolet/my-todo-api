@@ -1,5 +1,6 @@
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
+require 'shoulda-matchers'
 require 'database_cleaner'
 
 Shoulda::Matchers.configure do |config|
