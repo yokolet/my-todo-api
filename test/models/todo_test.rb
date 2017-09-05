@@ -14,5 +14,8 @@ class TodoTest < ActiveSupport::TestCase
   test "todo should have title and created_by" do
     #should validate_presence_of(:title)
     assert @todo.valid?
+
+    @todo.created_by = nil
+    refute @todo.valid?
   end
 end

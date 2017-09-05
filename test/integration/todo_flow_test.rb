@@ -36,4 +36,23 @@ class TodoFlowTest < ActionDispatch::IntegrationTest
     assert_response 404
     assert_match(/Couldn't find Todo/, @response.body)
   end
+
+  # POST /todos
+  test "post /todos" do
+    params = { todo: { title: Faker::Hacker.verb.capitalize,
+                        created_by: Faker::Number.number(11)}}
+    post "/todos", params: params
+    assert_response 201
+    data = JSON.parse(@response.body)
+    assert_equal(params[:todo][:title], data["title"])
+  end
+
+  # POST /todos with wrong params
+  test "post /todos/{title: 'title only'}" do
+    params = { todo: { title: Faker::Hacker.verb.capitalize }}
+    post "/todos", params: params
+    assert_response 422
+    data = JSON.parse(@response.body)
+    assert_match(/Validation failed: Created by can't be blank/, @response.body)
+  end
 end
