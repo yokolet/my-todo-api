@@ -63,4 +63,10 @@ class TodoFlowTest < ActionDispatch::IntegrationTest
     assert_response 204
     assert_empty @response.body
   end
+
+  # DELETE /todos/:id
+  test "delete /todos/:id" do
+    delete "/todos/#{@todo_id}"
+    assert_response 204
+  end
 end
