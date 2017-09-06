@@ -18,6 +18,13 @@ class TodosController < ApplicationController
     render json: @todo, status: :created
   end
 
+  # PUT /todos/:id
+  def update
+    @todo = Todo.find(params[:id])
+    @todo.update(todo_params)
+    head :no_content
+  end
+
   private
   def todo_params
     params.require(:todo).permit(:title, :created_by)

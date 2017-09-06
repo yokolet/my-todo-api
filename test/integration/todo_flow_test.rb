@@ -55,4 +55,12 @@ class TodoFlowTest < ActionDispatch::IntegrationTest
     data = JSON.parse(@response.body)
     assert_match(/Validation failed: Created by can't be blank/, @response.body)
   end
+
+  # PUT /todos/:id
+  test "put /todos/:id" do
+    params = { todo: { title: Faker::Hacker.verb.capitalize }}
+    put "/todos/#{@todo_id}", params: params
+    assert_response 204
+    assert_empty @response.body
+  end
 end
