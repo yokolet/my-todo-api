@@ -41,4 +41,20 @@ class ItemFlowsTest < ActionDispatch::IntegrationTest
     assert_response :not_found
     assert_match(/Couldn't find Item/, @response.body)
   end
+
+  # POST /todos/:todo_id/items
+  test "post /todos/:todo_id/items" do
+    params = { item: { name: Faker::StarWars.character,
+                       done: false }}
+    post "/todos/#{@todo_id}/items", params: params
+    assert_response :created
+  end
+
+  # POST /todos/:todo_id/items with invalid params
+  test "post /todos/:todo_id/itmes, params: invalid" do
+    params = { item: { done: true }}
+    post "/todos/#{@todo_id}/items", params: params
+    assert_response :unprocessable_entity
+    assert_match(/Validation failed: Name can't be blank/, @response.body)
+  end
 end

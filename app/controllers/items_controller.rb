@@ -11,5 +11,15 @@ class ItemsController < ApplicationController
     @item = @todo.items.find_by!(id: params[:id]) if @todo
     render json: @item, status: :ok
   end
-  
+
+  def create
+    @todo = Todo.find(params[:todo_id])
+    @item = @todo.items.create!(item_params)
+    render json: @item, status: :created
+  end
+
+  private
+  def item_params
+    params.require(:item).permit(:name, :done)
+  end
 end
