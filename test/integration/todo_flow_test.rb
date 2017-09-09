@@ -3,13 +3,7 @@ require 'test_helper'
 class TodoFlowTest < ActionDispatch::IntegrationTest
   def setup
     @todos = create_list(:todo, 5)
-    @items = []
-    for i in 0...5
-      @todos << create(:todo)
-    end
-    for i in 0...10
-      @items << create(:item)
-    end
+    @items = create_list(:item, 10)
     @todo_id = @todos.last.id
   end
 
