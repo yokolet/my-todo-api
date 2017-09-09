@@ -75,4 +75,10 @@ class ItemFlowsTest < ActionDispatch::IntegrationTest
     assert_response :unprocessable_entity
     assert_match(/Validation failed: Name can't be blank/, @response.body)
   end
+
+  # DELETE /todos/:todo_id/items/:id
+  test "delete /todos/:todo_id/items/:id" do
+    delete "/todos/#{@todo_id}/items/#{@item_id}"
+    assert_response :no_content
+  end
 end
