@@ -2,7 +2,7 @@ require 'test_helper'
 
 class TodoFlowTest < ActionDispatch::IntegrationTest
   def setup
-    @todos = []
+    @todos = create_list(:todo, 5)
     @items = []
     for i in 0...5
       @todos << create(:todo)
